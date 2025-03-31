@@ -1,5 +1,10 @@
+// Load environment variables
+require('dotenv').config();
+
 // Authentication API endpoints
-const API_BASE_URL = 'http://localhost:8080/ecommerce/api/auth';
+const API_BASE_URL = process.env.API_BASE_URL ? 
+    `${process.env.API_BASE_URL}/auth` : 
+    'http://localhost:8080/ecommerce/api/auth';
 
 // Sign In Form Handler
 document.getElementById('signinForm')?.addEventListener('submit', async (e) => {
