@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <a href="index.html" class="flex items-center py-4 px-2">
+                        <span class="font-semibold text-gray-500 text-lg">E-Commerce</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="products.html" class="py-2 px-2 text-gray-500 hover:text-gray-900">Products</a>
+                    <a href="cart.html" class="py-2 px-2 text-gray-500 hover:text-gray-900">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    <a href="#" id="userMenu" class="py-2 px-2 text-gray-500 hover:text-gray-900">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-md p-8 text-center">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check text-green-500 text-3xl"></i>
+            </div>
+            <h1 class="text-2xl font-bold mb-2">Order Confirmed!</h1>
+            <p class="text-gray-600 mb-6">Thank you for your purchase. Your order has been received.</p>
+            
+            <div class="max-w-md mx-auto bg-gray-50 rounded-lg p-6 mb-8">
+                <h2 class="font-bold mb-4">Order Details</h2>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Order Number:</span>
+                    <span id="orderNumber" class="font-medium">#${Math.floor(100000 + Math.random() * 900000)}</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Date:</span>
+                    <span id="orderDate" class="font-medium">${new Date().toLocaleDateString()}</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Total:</span>
+                    <span id="orderTotal" class="font-medium">$0.00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600">Payment Method:</span>
+                    <span id="paymentMethod" class="font-medium">Credit Card</span>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <p class="text-gray-600">We've sent a confirmation email with your order details.</p>
+                <p class="text-gray-600">You can track your order status in your account.</p>
+            </div>
+
+            <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="products.html" class="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                    Continue Shopping
+                </a>
+                <a href="index.html" class="px-6 py-3 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Display order total from session storage if available
+            const orderTotal = sessionStorage.getItem('orderTotal');
+            if (orderTotal) {
+                document.getElementById('orderTotal').textContent = `$${orderTotal}`;
+            }
+        });
+    </script>
+</body>
+</html>
