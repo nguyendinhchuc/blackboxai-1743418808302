@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-indigo-800 text-white p-4">
+            <h1 class="text-2xl font-bold mb-8">Admin Panel</h1>
+            <nav>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="index.html" class="flex items-center p-2 rounded hover:bg-indigo-700">
+                            <i class="fas fa-tachometer-alt mr-3"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="products.html" class="flex items-center p-2 rounded hover:bg-indigo-700">
+                            <i class="fas fa-boxes mr-3"></i>
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="orders.html" class="flex items-center p-2 rounded hover:bg-indigo-700">
+                            <i class="fas fa-shopping-cart mr-3"></i>
+                            Orders
+                        </a>
+                    </li>
+                    <li>
+                        <a href="users.html" class="flex items-center p-2 rounded hover:bg-indigo-700">
+                            <i class="fas fa-users mr-3"></i>
+                            Users
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html" class="flex items-center p-2 rounded bg-indigo-700">
+                            <i class="fas fa-cog mr-3"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold">Settings</h2>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="space-y-8">
+                    <!-- Store Settings -->
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Store Settings</h3>
+                        <form id="storeSettingsForm" class="space-y-4">
+                            <div>
+                                <label for="storeName" class="block text-sm font-medium text-gray-700">Store Name</label>
+                                <input type="text" id="storeName" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label for="storeEmail" class="block text-sm font-medium text-gray-700">Contact Email</label>
+                                <input type="email" id="storeEmail" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label for="storeCurrency" class="block text-sm font-medium text-gray-700">Currency</label>
+                                <select id="storeCurrency" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                    <option value="USD">US Dollar ($)</option>
+                                    <option value="EUR">Euro (€)</option>
+                                    <option value="GBP">British Pound (£)</option>
+                                </select>
+                            </div>
+                            <div class="pt-2">
+                                <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                                    Save Store Settings
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Payment Settings -->
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Payment Settings</h3>
+                        <form id="paymentSettingsForm" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Payment Methods</label>
+                                <div class="mt-2 space-y-2">
+                                    <div class="flex items-center">
+                                        <input id="creditCardEnabled" name="creditCardEnabled" type="checkbox" 
+                                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                                        <label for="creditCardEnabled" class="ml-2 block text-sm text-gray-700">Credit Card</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input id="paypalEnabled" name="paypalEnabled" type="checkbox" 
+                                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                                        <label for="paypalEnabled" class="ml-2 block text-sm text-gray-700">PayPal</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="stripeKey" class="block text-sm font-medium text-gray-700">Stripe Publishable Key</label>
+                                <input type="text" id="stripeKey"
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div class="pt-2">
+                                <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                                    Save Payment Settings
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Admin Account -->
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Admin Account</h3>
+                        <form id="adminAccountForm" class="space-y-4">
+                            <div>
+                                <label for="currentPassword" class="block text-sm font-medium text-gray-700">Current Password</label>
+                                <input type="password" id="currentPassword" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label for="newPassword" class="block text-sm font-medium text-gray-700">New Password</label>
+                                <input type="password" id="newPassword" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm New Password</label>
+                                <input type="password" id="confirmPassword" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div class="pt-2">
+                                <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                                    Change Password
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Load settings
+            const settings = await loadSettings();
+            if (settings) {
+                document.getElementById('storeName').value = settings.storeName || '';
+                document.getElementById('storeEmail').value = settings.storeEmail || '';
+                document.getElementById('storeCurrency').value = settings.currency || 'USD';
+                document.getElementById('creditCardEnabled').checked = settings.paymentMethods?.creditCard || false;
+                document.getElementById('paypalEnabled').checked = settings.paymentMethods?.paypal || false;
+                document.getElementById('stripeKey').value = settings.stripeKey || '';
+            }
+
+            // Form submissions
+            document.getElementById('storeSettingsForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                await saveSettings({
+                    storeName: document.getElementById('storeName').value,
+                    storeEmail: document.getElementById('storeEmail').value,
+                    currency: document.getElementById('storeCurrency').value
+                });
+                showToast('Store settings saved successfully', 'success');
+            });
+
+            document.getElementById('paymentSettingsForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                await saveSettings({
+                    paymentMethods: {
+                        creditCard: document.getElementById('creditCardEnabled').checked,
+                        paypal: document.getElementById('paypalEnabled').checked
+                    },
+                    stripeKey: document.getElementById('stripeKey').value
+                });
+                showToast('Payment settings saved successfully', 'success');
+            });
+
+            document.getElementById('adminAccountForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const currentPassword = document.getElementById('currentPassword').value;
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                if (newPassword !== confirmPassword) {
+                    showToast('New passwords do not match', 'error');
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`${ADMIN_API_BASE}/change-password`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                        },
+                        body: JSON.stringify({ currentPassword, newPassword })
+                    });
+
+                    if (response.ok) {
+                        showToast('Password changed successfully', 'success');
+                        document.getElementById('adminAccountForm').reset();
+                    } else {
+                        const error = await response.json();
+                        showToast(error.message || 'Failed to change password', 'error');
+                    }
+                } catch (error) {
+                    showToast('Error changing password', 'error');
+                    console.error('Password change error:', error);
+                }
+            });
+        });
+
+        async function loadSettings() {
+            try {
+                const response = await fetch(`${ADMIN_API_BASE}/settings`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    }
+                });
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading settings:', error);
+                return null;
+            }
+        }
+
+        async function saveSettings(settings) {
+            try {
+                await fetch(`${ADMIN_API_BASE}/settings`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    },
+                    body: JSON.stringify(settings)
+                });
+            } catch (error) {
+                console.error('Error saving settings:', error);
+            }
+        }
+    </script>
+</body>
+</html>
