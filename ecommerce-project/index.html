@@ -25,22 +25,267 @@
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="text-center py-12">
-            <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-                <span class="block">Welcome to our</span>
-                <span class="block text-indigo-600">E-Commerce Store</span>
-            </h1>
-            <div class="mt-5 sm:mt-8 sm:flex sm:justify-center">
-                <div class="rounded-md shadow">
-                    <a href="products.html" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                        Browse Products
+    <main>
+        <!-- Banner Slider -->
+        <div class="relative">
+            <div class="overflow-hidden">
+                <div class="flex transition-transform duration-300" id="bannerSlider">
+                    <div class="w-full flex-shrink-0">
+                        <img src="https://via.placeholder.com/1920x500" alt="Banner 1" class="w-full h-auto">
+                    </div>
+                    <div class="w-full flex-shrink-0">
+                        <img src="https://via.placeholder.com/1920x500" alt="Banner 2" class="w-full h-auto">
+                    </div>
+                    <div class="w-full flex-shrink-0">
+                        <img src="https://via.placeholder.com/1920x500" alt="Banner 3" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+            <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full" id="prevBanner">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full" id="nextBanner">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                <button class="w-3 h-3 rounded-full bg-white/80 banner-dot" data-index="0"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50 banner-dot" data-index="1"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50 banner-dot" data-index="2"></button>
+            </div>
+        </div>
+
+        <!-- Flash Sale Popup -->
+        <div id="flashSaleModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+            <div class="bg-white rounded-lg max-w-md w-full p-6 relative">
+                <button id="closeFlashSale" class="absolute top-4 right-4 text-gray-500">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-red-600 mb-2">FLASH SALE!</h3>
+                    <p class="text-lg mb-4">50% OFF selected items for first-time customers</p>
+                    <div class="flex justify-center gap-2 mb-6">
+                        <div class="bg-gray-100 px-3 py-1 rounded">
+                            <span class="font-bold" id="flashHours">02</span>h
+                        </div>
+                        <div class="bg-gray-100 px-3 py-1 rounded">
+                            <span class="font-bold" id="flashMinutes">30</span>m
+                        </div>
+                        <div class="bg-gray-100 px-3 py-1 rounded">
+                            <span class="font-bold" id="flashSeconds">45</span>s
+                        </div>
+                    </div>
+                    <a href="products.html?flashsale=true" class="inline-block bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700">
+                        Shop Now
                     </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center py-12">
+                <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+                    <span class="block">Welcome to our</span>
+                    <span class="block text-indigo-600">E-Commerce Store</span>
+                </h1>
+                <div class="mt-5 sm:mt-8 sm:flex sm:justify-center">
+                    <div class="rounded-md shadow">
+                        <a href="products.html" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                            Browse Products
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Categories Section -->
+        <div class="bg-gray-50 py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl font-bold mb-8 text-center">Shop by Category</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <a href="products.html?category=electronics" class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-transform hover:-translate-y-1">
+                        <div class="mx-auto h-16 w-16 flex items-center justify-center bg-indigo-100 rounded-full mb-4">
+                            <i class="fas fa-laptop text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-medium">Electronics</h3>
+                        <p class="text-sm text-gray-500 mt-1">200+ products</p>
+                    </a>
+                    <a href="products.html?category=clothing" class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-transform hover:-translate-y-1">
+                        <div class="mx-auto h-16 w-16 flex items-center justify-center bg-green-100 rounded-full mb-4">
+                            <i class="fas fa-tshirt text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-medium">Clothing</h3>
+                        <p class="text-sm text-gray-500 mt-1">150+ products</p>
+                    </a>
+                    <a href="products.html?category=home" class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-transform hover:-translate-y-1">
+                        <div class="mx-auto h-16 w-16 flex items-center justify-center bg-yellow-100 rounded-full mb-4">
+                            <i class="fas fa-home text-yellow-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-medium">Home & Living</h3>
+                        <p class="text-sm text-gray-500 mt-1">120+ products</p>
+                    </a>
+                    <a href="products.html?category=beauty" class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-transform hover:-translate-y-1">
+                        <div class="mx-auto h-16 w-16 flex items-center justify-center bg-pink-100 rounded-full mb-4">
+                            <i class="fas fa-spa text-pink-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-medium">Beauty</h3>
+                        <p class="text-sm text-gray-500 mt-1">80+ products</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Products Section -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold">Featured Products</h2>
+                <a href="products.html" class="text-indigo-600 hover:text-indigo-800 font-medium">
+                    View All Products <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <img src="https://via.placeholder.com/300x200" alt="Product" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-medium text-lg mb-1">Wireless Headphones</h3>
+                        <p class="text-gray-500 mb-2">Electronics</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">$99.99</span>
+                            <button class="bg-indigo-600 text-white px-3 py-1 rounded-md hover:bg-indigo-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <img src="https://via.placeholder.com/300x200" alt="Product" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-medium text-lg mb-1">Cotton T-Shirt</h3>
+                        <p class="text-gray-500 mb-2">Clothing</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">$24.99</span>
+                            <button class="bg-indigo-600 text-white px-3 py-1 rounded-md hover:bg-indigo-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <img src="https://via.placeholder.com/300x200" alt="Product" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-medium text-lg mb-1">Coffee Table</h3>
+                        <p class="text-gray-500 mb-2">Home & Living</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">$149.99</span>
+                            <button class="bg-indigo-600 text-white px-3 py-1 rounded-md hover:bg-indigo-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <img src="https://via.placeholder.com/300x200" alt="Product" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-medium text-lg mb-1">Skincare Set</h3>
+                        <p class="text-gray-500 mb-2">Beauty</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">$59.99</span>
+                            <button class="bg-indigo-600 text-white px-3 py-1 rounded-md hover:bg-indigo-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
     <script src="js/auth.js"></script>
+    <script src="js/product.js"></script>
+    <script>
+        // Banner Slider
+        let currentBanner = 0;
+        const banners = document.querySelectorAll('#bannerSlider > div');
+        const dots = document.querySelectorAll('.banner-dot');
+        
+        function showBanner(index) {
+            banners.forEach((banner, i) => {
+                banner.style.transform = `translateX(-${index * 100}%)`;
+                dots[i].classList.toggle('bg-white/80', i === index);
+                dots[i].classList.toggle('bg-white/50', i !== index);
+            });
+            currentBanner = index;
+        }
+
+        document.getElementById('prevBanner').addEventListener('click', () => {
+            showBanner((currentBanner - 1 + banners.length) % banners.length);
+        });
+
+        document.getElementById('nextBanner').addEventListener('click', () => {
+            showBanner((currentBanner + 1) % banners.length);
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showBanner(parseInt(dot.dataset.index));
+            });
+        });
+
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            showBanner((currentBanner + 1) % banners.length);
+        }, 5000);
+
+        // Flash Sale Popup
+        document.addEventListener('DOMContentLoaded', () => {
+            // Only show if not shown before (using localStorage)
+            if (!localStorage.getItem('flashSaleShown')) {
+                setTimeout(() => {
+                    document.getElementById('flashSaleModal').classList.remove('hidden');
+                    startCountdown();
+                    localStorage.setItem('flashSaleShown', 'true');
+                }, 2000);
+            }
+        });
+
+        document.getElementById('closeFlashSale').addEventListener('click', () => {
+            document.getElementById('flashSaleModal').classList.add('hidden');
+        });
+
+        function startCountdown() {
+            let hours = 2;
+            let minutes = 30;
+            let seconds = 45;
+
+            const countdown = setInterval(() => {
+                seconds--;
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                }
+                if (minutes < 0) {
+                    minutes = 59;
+                    hours--;
+                }
+                if (hours < 0) {
+                    clearInterval(countdown);
+                    document.getElementById('flashSaleModal').classList.add('hidden');
+                    return;
+                }
+
+                document.getElementById('flashHours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('flashMinutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('flashSeconds').textContent = seconds.toString().padStart(2, '0');
+            }, 1000);
+        }
+    </script>
 </body>
 </html>
