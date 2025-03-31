@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <a href="index.html" class="flex items-center py-4 px-2">
+                        <span class="font-semibold text-gray-500 text-lg">E-Commerce</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="products.html" class="py-2 px-2 text-gray-500 hover:text-gray-900">Products</a>
+                    <a href="cart.html" class="py-2 px-2 text-gray-500 hover:text-gray-900">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    <a href="#" id="userMenu" class="py-2 px-2 text-gray-500 hover:text-gray-900">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- Checkout Form -->
+            <div class="w-full md:w-2/3">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-6">Checkout</h2>
+                    
+                    <form id="checkoutForm">
+                        <!-- Shipping Address -->
+                        <div class="mb-8">
+                            <h3 class="font-bold text-lg mb-4">Shipping Address</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" required
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+                                    <input type="text" id="address" name="address" required
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                                <div>
+                                    <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                                    <input type="text" id="city" name="city" required
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                                <div>
+                                    <label for="zipCode" class="block text-sm font-medium text-gray-700">ZIP Code</label>
+                                    <input type="text" id="zipCode" name="zipCode" required
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                                <div>
+                                    <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                                    <select id="country" name="country" required
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                        <option value="">Select Country</option>
+                                        <option value="US">United States</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="UK">United Kingdom</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                                    <input type="tel" id="phone" name="phone" required
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="mb-8">
+                            <h3 class="font-bold text-lg mb-4">Payment Method</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <input id="creditCard" name="paymentMethod" type="radio" value="creditCard" checked
+                                        class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300">
+                                    <label for="creditCard" class="ml-2 block text-sm text-gray-700">
+                                        Credit Card
+                                    </label>
+                                </div>
+                                <div id="creditCardFields" class="ml-6 mt-2 space-y-4">
+                                    <div>
+                                        <label for="cardNumber" class="block text-sm font-medium text-gray-700">Card Number</label>
+                                        <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456"
+                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="expiryDate" class="block text-sm font-medium text-gray-700">Expiry Date</label>
+                                            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY"
+                                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                        </div>
+                                        <div>
+                                            <label for="cvv" class="block text-sm font-medium text-gray-700">CVV</label>
+                                            <input type="text" id="cvv" name="cvv" placeholder="123"
+                                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-indigo-600 text-white py-3 rounded-md hover:bg-indigo-700">
+                            Complete Order
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="w-full md:w-1/3">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-lg font-bold mb-4">Order Summary</h2>
+                    <div id="orderItems" class="space-y-4 mb-6">
+                        <!-- Order items will be loaded here -->
+                    </div>
+                    <div class="space-y-3 border-t pt-4">
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span id="orderSubtotal">$0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Shipping</span>
+                            <span id="orderShipping">$0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Tax</span>
+                            <span id="orderTax">$0.00</span>
+                        </div>
+                        <div class="flex justify-between font-bold text-lg">
+                            <span>Total</span>
+                            <span id="orderTotal">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Initialize checkout page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load order summary from cart
+            const totals = cart.calculateTotal();
+            document.getElementById('orderSubtotal').textContent = `$${totals.subtotal}`;
+            document.getElementById('orderShipping').textContent = `$${totals.shipping}`;
+            document.getElementById('orderTax').textContent = `$${totals.tax}`;
+            document.getElementById('orderTotal').textContent = `$${totals.total}`;
+
+            // Render order items
+            const orderItemsContainer = document.getElementById('orderItems');
+            if (cart.items.length > 0) {
+                orderItemsContainer.innerHTML = cart.items.map(item => `
+                    <div class="flex items-center">
+                        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded">
+                        <div class="ml-3">
+                            <h4 class="font-medium">${item.name}</h4>
+                            <p class="text-sm text-gray-500">${item.quantity} × $${item.price}</p>
+                        </div>
+                        <div class="ml-auto font-medium">
+                            $${(item.price * item.quantity).toFixed(2)}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Handle form submission
+            document.getElementById('checkoutForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Process payment
+                try {
+                    const paymentData = {
+                        amount: totals.total,
+                        cardNumber: document.getElementById('cardNumber').value,
+                        expiryDate: document.getElementById('expiryDate').value,
+                        cvv: document.getElementById('cvv').value
+                    };
+
+                    const response = await fetch('http://localhost:8080/ecommerce/api/payments', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(paymentData)
+                    });
+
+                    if (response.ok) {
+                        // Clear cart on successful payment
+                        cart.items = [];
+                        cart.save();
+                        cart.updateCartCount();
+                        
+                        // Redirect to confirmation page
+                        window.location.href = 'confirmation.html';
+                    } else {
+                        const error = await response.json();
+                        showToast(error.message || 'Payment failed', 'error');
+                    }
+                } catch (error) {
+                    showToast('Payment processing error', 'error');
+                    console.error('Payment error:', error);
+                }
+            });
+        });
+
+        // Toast notification function
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `fixed top-4 right-4 px-4 py-2 rounded-md shadow-lg text-white ${
+                type === 'error' ? 'bg-red-500' : 
+                type === 'success' ? 'bg-green-500' : 'bg-blue-500'
+            }`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
